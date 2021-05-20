@@ -1,0 +1,48 @@
+
+
+* Using python requests with the simplero api
+First things first, I started with creating a python virtual environment to install dependencies for the project. 
+#+BEGIN_SRC bash :eval no-export :results pp replace
+pwd
+python3 -m venv .venv
+ls -Al
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+/home/martin/vc/projects/AKROBAT/pysimplero
+total 92
+-rw-r--r-- 1 martin martin     0 May 20 21:06 .gitignore
+-rw-r--r-- 1 martin martin 35148 May 20 21:31 LICENSE
+-rw-r--r-- 1 martin martin 25490 May 20 21:28 packaging_tutorial.org
+-rw-r--r-- 1 martin martin   104 May 20 21:15 pyproject.toml
+-rw-r--r-- 1 martin martin   171 May 20 21:28 README.md
+-rw-r--r-- 1 martin martin   913 May 20 21:53 README.org
+-rw-r--r-- 1 martin martin   593 May 20 21:24 setup.cfg
+drwxr-xr-x 3 martin martin  4096 May 20 21:08 src
+drwxr-xr-x 2 martin martin  4096 May 20 21:08 tests
+drwxr-xr-x 5 martin martin  4096 May 20 21:53 .venv
+#+end_example
+
+After creating the virtual environment go ahead and activate it creating a session to work in using this snippet of emacs-lisp code:
+
+#+BEGIN_SRC emacs-lisp :session *pysimplero* :results silent
+(pyvenv-activate ".venv")
+#+END_SRC
+And the we upgrade pip in our venv
+#+BEGIN_SRC bash :session *pysimplero* :results silent
+# source .venv/bin/activate
+pip install --upgrade pip
+
+
+#+END_SRC
+
+
+** Installing Requests
+
+ Requests installation depends on type of operating system on eis using, the basic command anywhere would be to open a command
+ terminal and run,
+#+BEGIN_SRC bash  :session *pysimplero* :results silent
+pip install requests
+
+#+END_SRC
