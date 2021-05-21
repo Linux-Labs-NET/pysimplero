@@ -1,4 +1,8 @@
 secrets.py
 .venv
 __pycache__
+<<<<<<< HEAD
+=======
+packaging_tutorial.org
+>>>>>>> f53edf2 (update readme.md)
 
