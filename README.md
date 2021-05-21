@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# Example Package
-
-This is a simple example package. You can use
-[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
-=======
 # Pysimplero
 API client for the Simplero api using the python requests module. 
 
@@ -51,4 +44,3 @@ GET method is used to retrieve information from the given server using a given U
 After installing the requests module in your venv go ahead and create a secrets.py file in the src/pysimplero folder with your api_key and user_agent info.
 
 Then you can run python pysimplero to get a list of your mailinglist id's. 
->>>>>>> f53edf2 (update readme.md)
