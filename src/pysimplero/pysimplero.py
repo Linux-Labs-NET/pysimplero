@@ -19,12 +19,13 @@ class Pysimplero:
 
         response = requests.get('https://simplero.com/api/v1/lists.json', headers=headers, auth=(api_key, ''))
         parsed = json.loads(response.content)
+        print("[{\"Lists\":")
         # prettyparsed = json.dumps(parsed, indent=4, sort_keys=True)
         # print(prettyparsed)
         for i in range(len(parsed)):
             list_ids = parsed[i]
-            print("{\"ID\": ", list_ids['id'], ", \"name\":  ","\"" , list_ids['name'],"\" }")
-
+            print("{\"ID\": ", list_ids['id'], ", \"name\":  ","\"" , list_ids['name'],"\" },")
+        print("}]")
         return response
 
     def add_subscriber(self, list_id, data):
@@ -38,12 +39,43 @@ class Pysimplero:
         parsed = json.loads(subscribe.content)
         prettyparsed = json.dumps(parsed, indent=4, sort_keys=True)
         print(prettyparsed)
-        return subscribe 
+        return subscribe
+
+    def get_products(self):
+        """Get all lists from simplero"""
+        headers = {'User-Agent': user_agent,}
+
+        response = requests.get('https://simplero.com/api/v1/products.json', headers=headers, auth=(api_key, ''))
+        parsed = json.loads(response.content)
+        print("Products:")
+        print("----------------------------------------------------")
+#        prettyparsed = json.dumps(parsed, indent=4, sort_keys=True)
+#        print(prettyparsed)
+        for i in range(len(parsed)):
+            product_ids = parsed[i]
+            print("ID: ", product_ids['id'], "name:  ",  product_ids['name'],)
+        print("----------------------------------------------------")
+        return response
+
+    def get_product_by_id(self, product_id):
+        """Get product by ID"""
+        headers = {'User-Agent': user_agent,}
+        self.product_id = product_id
+        url = "https://simplero.com/api/v1/products/" + str(product_id) + ".json"
+
+        response = requests.get(url, headers=headers, auth=(api_key, ''))
+        parsed_json = json.loads(response.content)
+        prettyparsed = json.dumps(parsed_json, indent=4, sort_keys=True)
+        print(prettyparsed)
+        return response
+    
 
     
 
               
 p = Pysimplero(api_key, user_agent)
 lists = p.get_lists()
+products = p.get_products()
+# pr84458 = p.get_product_by_id(84458)
 # data = { "first_name": "Pysimplero AKROBAT", "email": "lando@akrobatonline.dk" }
 # newsub = p.add_subscriber(list_id='93848', data=data)
